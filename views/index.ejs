@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Book Notes</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="welcomeSect">
+
+            <h1>My Book Reviews</h1>
+            <h2>Hugo Samayoa</h2>
+            <p>This site is for me to add the books that I have read and give my opinion about it.
+                I want to share what I initially thought about the book and what lesson I learned from it.
+                I also wanted to include books that were suggested to me and a bried summary of what it's about.
+            </p>
+            <p><a href="/new">Add a new book</a></p>
+            <hr>
+
+        </div>
+
+        <div class="bookInfo">
+
+            <% for(let book of books) { %>
+                <h2 id="bookTitle">Title: <%= book.title %></h2>
+                <h3>Author: <%= book.author %></h3>
+                <img src="<%= book.isbn %>" alt="Book">
+                <p>
+                    <%= book.rating %>
+                </p>
+                <form action="/delete" method="post">
+                    <button type="submit" name="deleteItemId" value="<%= book.id  %>">Delete</button>
+                </form>
+
+                <button type="submit" name="editItem" value="<%= book.id  %>" onclick="appear('<%= book.id %>')">Edit</button>
+
+                <form id="editForm<%= book.id %>" action="/edit" method="post" style="display: none;">
+                    <input type="hidden" name="updateItemId" value="<%= book.id %>">
+                    <input type="text" name="updateTitle" value="<%= book.title %>">
+                    <input type="text" name="updateAuthor" value="<%= book.author %>">
+                    <input type="text" name="updateRating" value="<%= book.rating %>">
+                    <button type="submit">Update</button>
+                </form>
+
+
+                <% } %>
+        </div>
+
+        <footer>
+            Hugo Samayoa &#169 2024. Book images by openlibary.org.
+        </footer>
+
+    </div>
+
+
+
+
+
+        <script>
+            function appear(id){
+                document.getElementById("editForm" + id).style.display = "block";
+            }
+        </script>
+</body>
+</html>

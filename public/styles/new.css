@@ -1,0 +1,28 @@
+body {
+    margin: 0px auto;
+    text-align: center;
+    background-color: #3C5B6F;
+    color: #b6ab98;
+}
+
+button {
+    margin-bottom: 10px;
+    background-color: #f0e7d8;
+    border-radius: 5px;
+}
+
+label, input {
+    margin-bottom: 1rem;
+}
+
+footer {
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+    color: black;
+    margin-top: 7rem;
+}
+
+a {
+    color: #f0e8dc;
+}
